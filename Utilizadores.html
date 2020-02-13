@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  
+</head>
+<body>
+
+    <form id="usr">
+    <input type="texto" id="userid" name="utilizador">
+    <input type="texto" id="passwordid" name="password">
+    <input type="texto" id="emailid" name="e">
+    <button Class="button" type="button" id="botao" style="vertical-align:middle"
+    onclick=""><span>Login</span></button>
+    <button Class="button" type="button" id="botao" style="vertical-align:middle"
+    onclick="inserir_user()"><span>Registo</span></button>
+</form>
+    
+</body>
+</html>
+
+<script>  
+function inserir_user() {
+        // apiR.send
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost:8080/api/users", true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+              //  document.getElementById("mensagemsucesso").style.visibility = 'visible';
+            }
+        };
+
+        var dados = {}
+        dados.username = usr.userid.value;
+        dados.password = usr.passwordid.value;
+        dados.email = usr.emailid.value;
+
+
+
+        if (dados.username == null || dados.password == 0 || dados.email == 0) {
+            document.getElementById("mensagemerro").style.visibility = 'visible';
+
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function () { div.style.display = "none"; }, 600);
+                }
+            }
+
+        } else {
+            var dadosemJSON = JSON.stringify(dados)
+            console.log("Dados:", dadosemJSON);
+            xhttp.send(dadosemJSON);
+
+          //  limparcampos();
+
+        }
+
+    }
+
+
+
+</script>
