@@ -375,7 +375,7 @@
     function inserir_produto() {
         // apiR.send
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:8080/api/produtos", true);
+        xhttp.open("POST", "https://produtosapi.azurewebsites.net/api/produtos", true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -425,7 +425,7 @@
 
     function verproduto() {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "http://localhost:8080/api/produtos", true);
+        xhttp.open("GET", "https://produtosapi.azurewebsites.net/api/produtos", true);
 
         u = ver.tabelaverid.value;
         xhttp.send(u);
@@ -464,7 +464,7 @@
 
     function viewtables() {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "http://localhost:8080/api/produtos", true);
+        xhttp.open("GET", "https://produtosapi.azurewebsites.net/api/produtos", true);
 
         u = update.tabelaupdateid.value;
         xhttp.send(u);
@@ -511,7 +511,7 @@
 
         var fid = get_id("tableD");
         var xhttp = new XMLHttpRequest();
-        xhttp.open("DELETE", "http://localhost:8080/api/produtos/" + fid, true);
+        xhttp.open("DELETE", "https://produtosapi.azurewebsites.net/api/produtos/" + fid, true);
 
         u = ver.tabelaverid.value;
         xhttp.send(u);
@@ -545,7 +545,7 @@
 
         var fid = get_id("tableU");
         var xhttp = new XMLHttpRequest();
-        xhttp.open("PUT", "http://localhost:8080/api/produtos/" + fid, true);
+        xhttp.open("PUT", "https://produtosapi.azurewebsites.net/api/produtos/" + fid, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         console.log(corpo_mensagem);
         xhttp.send(corpo_mensagem);
